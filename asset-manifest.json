@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/annexa_app/static/css/main.06710861.css",
+    "main.js": "/annexa_app/static/js/main.43603d79.js",
+    "static/js/453.d75b3065.chunk.js": "/annexa_app/static/js/453.d75b3065.chunk.js",
+    "index.html": "/annexa_app/index.html",
+    "main.06710861.css.map": "/annexa_app/static/css/main.06710861.css.map",
+    "main.43603d79.js.map": "/annexa_app/static/js/main.43603d79.js.map",
+    "453.d75b3065.chunk.js.map": "/annexa_app/static/js/453.d75b3065.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.06710861.css",
+    "static/js/main.43603d79.js"
+  ]
+}
