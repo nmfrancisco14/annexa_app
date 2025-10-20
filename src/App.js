@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { AlertCircle, CheckCircle, User, Upload } from 'lucide-react';
+// import { Modal, Button } from "react-bootstrap";
+// import "bootstrap/dist/css/bootstrap.min.css";
 import * as XLSX from 'xlsx';
 import ExcelJS from 'exceljs';
 
@@ -11,6 +13,7 @@ const StaffReportApp = () => {
   const [success, setSuccess] = useState('');
   const [fileName, setFileName] = useState('');
   const [avatars, setAvatars] = useState({});
+  const [showWelcomeModal, setShowWelcomeModal] = useState(true);
   // Theme: 'light' | 'dark' persisted in localStorage and applied to <html> via `dark` class
   const [theme, setTheme] = useState(() => {
     try {
@@ -22,6 +25,7 @@ const StaffReportApp = () => {
   });
   // pagination removed — table now scrolls vertically inside its container
 
+
   useEffect(() => {
     const savedData = window.staffReportData;
     if (savedData) {
@@ -31,7 +35,20 @@ const StaffReportApp = () => {
         setSelectedStaff(Object.keys(savedData.data)[0]);
       }
     }
+    
   }, []);
+
+  // ✅ Show the modal once when app loads
+ // useEffect(() => {
+  //   const modal = new window.bootstrap.Modal(
+  //     document.getElementById("infoModal")
+  //   );
+  //   modal.show();
+  // }, []);
+
+
+
+
 
   // Helper to load an ArrayBuffer (from fetch or file reader) and process it
   const loadExcelBuffer = async (arrayBuffer, incomingFileName = 'default.xlsx') => {
@@ -86,6 +103,8 @@ const StaffReportApp = () => {
       setLoading(false);
     }
   };
+
+  
 
   // Fetch a cat image URL for each staff name using TheCatAPI; returns map { staffName: imageUrl }
   const fetchAvatarsForStaff = async (staffNames) => {
@@ -791,6 +810,177 @@ const StaffReportApp = () => {
 
   return (
     <div className="min-h-screen min-w-full bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 p-4 md:p-8 overflow-hidden relative dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+            {/* Welcome Modal */}
+        {showWelcomeModal && (
+          <div 
+            className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"
+            onClick={() => setShowWelcomeModal(false)}
+          >
+            <div 
+              className="bg-white rounded-2xl shadow-2xl w-full max-w-4xl h-[70vh] flex flex-col"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="bg-gradient-to-r from-blue-600 to-indigo-600 p-6 rounded-t-2xl flex-shrink-0">
+                <div className="flex items-center justify-between">
+                  <h1 className="text-3xl font-bold text-white flex items-center gap-3">
+                    🐾 Staff ANNEX A Generator
+                  </h1>
+                  <button
+                    onClick={() => setShowWelcomeModal(false)}
+                    className="text-white hover:text-gray-200 text-3xl font-bold leading-none"
+                  >
+                    ×
+                  </button>
+                </div>
+                <p className="text-blue-100 italic mt-2">
+                  "I'm not even sure I really need this web app, but I built it anyway…"
+                </p>
+              </div>
+
+              <div className="flex-1 overflow-y-auto p-8 space-y-6">
+                {/* All content sections here */}
+                <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded">
+                  <p className="text-gray-700">
+                    Though wala akong spare time, I used my <strong>procrastination powers</strong> to delay real deadlines and create this nonsense (but actually useful) app — para magawa ko ang <strong>ANNEX A</strong> ng team. YEY.
+                  </p>
+                </div>
+
+                  <div>
+                  <h2 className="text-2xl font-bold text-gray-800 mb-3 flex items-center gap-2">
+                    🧩 About the App
+                  </h2>
+                  <p className="text-gray-700 mb-3">
+                    The <strong>Staff ANNEX A Generator</strong> is a lightweight web tool that helps automate the creation and formatting of <strong>ANNEX A</strong> files for staff members.
+                  </p>
+                  <p className="text-gray-700 mb-2">It allows users to:</p>
+                  <ul className="list-disc list-inside text-gray-700 space-y-1 ml-4">
+                    <li>View their TOR (Terms of Reference) data for a specific period (default: <strong>January–June 2026</strong>)</li>
+                    <li>Download formatted reports as <strong>Word (.docx)</strong> or <strong>Excel (.xlsx)</strong> files</li>
+                    <li>Optionally upload their own TOR data file</li>
+                  </ul>
+                  <p className="text-gray-700 mt-3">
+                    And yes — <strong>random cats</strong> will appear throughout the app. They're completely irrelevant to the tool's function, but undeniably <strong>cute</strong> 😸
+                  </p>
+                </div>
+
+                <div>
+                  <h2 className="text-2xl font-bold text-gray-800 mb-3 flex items-center gap-2">
+                    🛠️ Built With
+                  </h2>
+                  <p className="text-gray-700 mb-2">This app was made with:</p>
+                  <ul className="list-disc list-inside text-gray-700 space-y-1 ml-4">
+                    <li><strong>React</strong> — Frontend framework</li>
+                    <li><strong>JavaScript (ES6+)</strong> — Core programming language</li>
+                    <li><strong>XLSX</strong> — For reading and exporting Excel files</li>
+                    <li><strong>Tailwind CSS</strong> — For UI styling</li>
+                    <li><strong>TheCatAPI</strong> — For fetching adorable (and irrelevant) cat images</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h2 className="text-2xl font-bold text-gray-800 mb-3 flex items-center gap-2">
+                    📘 Instructions
+                  </h2>
+                  <p className="text-gray-700 mb-3">
+                    By default, the app already includes <strong>TOR data for January to June 2026</strong>. You can navigate and explore your respective TORs by selecting your <strong>name</strong> under <em>Staff Member</em> — the corresponding table will be displayed on the right.
+                  </p>
+                  <div className="bg-blue-50 p-4 rounded-lg">
+                    <p className="text-gray-800 font-semibold mb-2">💾 You can:</p>
+                    <ul className="list-disc list-inside text-gray-700 space-y-1 ml-4">
+                      <li><strong>Download as Word (.docx)</strong> → This is the version you'll submit to <em>Rain</em> 😅</li>
+                      <li><strong>Download as Excel (.xlsx)</strong> → For your personal records or edits</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div>
+                  <h2 className="text-2xl font-bold text-gray-800 mb-3 flex items-center gap-2">
+                    📤 Uploading Your Own TOR File
+                  </h2>
+                  <p className="text-gray-700 mb-3">
+                    If you want to use your own data, you can upload an Excel file (<code className="bg-gray-100 px-2 py-1 rounded">.xlsx</code> or <code className="bg-gray-100 px-2 py-1 rounded">.xls</code>) that includes the following variables:
+                  </p>
+                  <div className="overflow-x-auto">
+                    <table className="min-w-full border border-gray-300 text-sm">
+                      <thead className="bg-gray-100">
+                        <tr>
+                          <th className="border border-gray-300 px-3 py-2 text-left font-semibold">Variable</th>
+                          <th className="border border-gray-300 px-3 py-2 text-left font-semibold">Description</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr><td className="border border-gray-300 px-3 py-2"><strong>Staff / Position</strong></td><td className="border border-gray-300 px-3 py-2">Name and position of the staff member</td></tr>
+                        <tr><td className="border border-gray-300 px-3 py-2"><strong>MFO</strong></td><td className="border border-gray-300 px-3 py-2">Major Final Output</td></tr>
+                        <tr><td className="border border-gray-300 px-3 py-2"><strong>Major Category</strong></td><td className="border border-gray-300 px-3 py-2">Task classification</td></tr>
+                        <tr><td className="border border-gray-300 px-3 py-2"><strong>Task / Terms of Reference (ToR)</strong></td><td className="border border-gray-300 px-3 py-2">Description of activity</td></tr>
+                        <tr><td className="border border-gray-300 px-3 py-2"><strong>E: Measure of Effectiveness</strong></td><td className="border border-gray-300 px-3 py-2">Numeric output measure</td></tr>
+                        <tr><td className="border border-gray-300 px-3 py-2"><strong>Q: Measure of Quality</strong></td><td className="border border-gray-300 px-3 py-2">Quality criteria or description</td></tr>
+                        <tr><td className="border border-gray-300 px-3 py-2"><strong>T: Measure of Time</strong></td><td className="border border-gray-300 px-3 py-2">Timeliness measure (updated per request)</td></tr>
+                        <tr><td className="border border-gray-300 px-3 py-2"><strong>Areas</strong></td><td className="border border-gray-300 px-3 py-2">Focus areas or regions</td></tr>
+                        <tr><td className="border border-gray-300 px-3 py-2"><strong>Charging Code</strong></td><td className="border border-gray-300 px-3 py-2">Code or budget reference</td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div className="bg-yellow-50 border-l-4 border-yellow-400 p-3 mt-3 rounded">
+                    <p className="text-sm text-gray-700">
+                      ⚠️ <strong>Disclaimer:</strong> Di ko pa natest if may kulang sa variables na yan hehe 😅
+                    </p>
+                  </div>
+                </div>
+
+                <div>
+                  <h2 className="text-2xl font-bold text-gray-800 mb-3 flex items-center gap-2">
+                    🐱 Fun but Useless Feature
+                  </h2>
+                  <blockquote className="border-l-4 border-gray-400 pl-4 italic text-gray-700 mb-3">
+                    "AS usual, random cats will be seen on this web app."
+                  </blockquote>
+                  <p className="text-gray-700">
+                    The app randomly loads images from <strong>TheCatAPI</strong>. They serve <em>absolutely no purpose</em> other than to make the experience more enjoyable.
+                  </p>
+                </div>
+
+                <div>
+                  <h2 className="text-2xl font-bold text-gray-800 mb-3 flex items-center gap-2">
+                    🧑‍💻 Developer Notes
+                  </h2>
+                  <p className="text-gray-700 mb-3">
+                    This project was built out of <strong>procrastination</strong>, <strong>necessity</strong>, and <strong>cat appreciation</strong>.
+                  </p>
+                  <p className="text-gray-700 mb-3">
+                    ALSO <strong>Big Thanks</strong> to AI Friends (Claude, ChatGPT) for helping me code this app.
+                  </p>
+                </div>
+
+                <div className="border-t pt-4">
+                  <h2 className="text-xl font-bold text-gray-800 mb-2">🪄 Future Plans</h2>
+                  <p className="text-gray-700">
+                    No plans. This may be abandoned. Except when looking for cats. Or next contract
+                  </p>
+                </div>
+
+                <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-4 rounded-lg text-center">
+                  <p className="text-gray-700 font-semibold">Created by: Nefriend Francisco</p>
+                  <p className="text-gray-600 text-sm">PhilRice Data Analytics Center - Analytics Unit</p>
+                </div>
+
+
+                <div className="flex justify-center pb-4">
+                  <button
+                    onClick={() => setShowWelcomeModal(false)}
+                    className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold py-3 px-8 rounded-xl shadow-lg transform hover:scale-105 transition-all duration-200"
+                  >
+                    Let's Get Started! 🚀
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+      
+      
+      
       {/* Moving cats background (non-interactive) */}
       <div className="moving-cats pointer-events-none absolute inset-0 z-0">
         <div className="cat cat1" style={{ fontSize: '2rem', top: '6%', animationDuration: '9s' }}>🐱</div>
@@ -940,8 +1130,12 @@ const StaffReportApp = () => {
           </div>
         </div>
       </div>
-    </div>
-  );
-};
 
+      
+
+    </div>
+
+
+  ); 
+};
 export default StaffReportApp;

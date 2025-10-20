@@ -1,70 +1,92 @@
-# Getting Started with Create React App
+# 🐾 Staff ANNEX A Generator
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> “I'm not even sure I really need this web app, but I built it anyway…”
 
-## Available Scripts
+Though wala akong spare time, I used my **procrastination powers** to delay real deadlines and create this nonsense (but actually useful) app — para magawa ko ang **ANNEX A** ng team. YEY.
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 🧩 About the App
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The **Staff ANNEX A Generator** is a lightweight web tool that helps automate the creation and formatting of **ANNEX A** files for staff members.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+It allows users to:
+- View their TOR (Terms of Reference) data for a specific period (default: **January–June 2026**)
+- Download formatted reports as **Word (.docx)** or **Excel (.xlsx)** files
+- Optionally upload their own TOR data file
 
-### `npm test`
+And yes — **random cats** will appear throughout the app. They’re completely irrelevant to the tool’s function, but undeniably **cute** 😸
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## 🛠️ Built With
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+This app was made with:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **[React](https://react.dev/)** — Frontend framework  
+- **JavaScript (ES6+)** — Core programming language  
+- **[Vite / Create React App](https://vitejs.dev/)** — Development environment  
+- **[XLSX](https://www.npmjs.com/package/xlsx)** — For reading and exporting Excel files  
+- **[docx](https://www.npmjs.com/package/docx)** — For generating Word reports  
+- **[Bootstrap / Tailwind / custom CSS]** — For UI styling  
+- **[TheCatAPI](https://thecatapi.com/)** — For fetching adorable (and irrelevant) cat images  
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## 📘 Instructions
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+By default, the app already includes **TOR data for January to June 2026**.  
+You can navigate and explore your respective TORs by selecting your **name** under *Staff Member* — the corresponding table will be displayed on the right.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 💾 You can:
+- **Download as Word (.docx)** → This is the version you’ll submit to *Rain* 😅  
+- **Download as Excel (.xlsx)** → For your personal records or edits  
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 📤 Uploading Your Own TOR File
 
-## Learn More
+If you want to use your own data, you can upload an Excel file (`.xlsx` or `.xls`) that includes the following variables:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+| Variable | Description |
+|-----------|--------------|
+| **Staff / Position** | Name and position of the staff member |
+| **MFO** | Major Final Output |
+| **Major Category** | Task classification |
+| **Task / Terms of Reference (ToR)** | Description of activity |
+| **E: Measure of Effectiveness** | Numeric output measure |
+| **Q: Measure of Quality** | Quality criteria or description |
+| **T: Measure of Time** | Timeliness measure (updated per request) |
+| **Areas** | Focus areas or regions |
+| **Charging Code** | Code or budget reference |
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+> ⚠️ Disclaimer: Di ko pa natest if may kulang sa variables na yan hehe 😅
 
-### Code Splitting
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 🐱 Fun but Useless Feature
 
-### Analyzing the Bundle Size
+> “AS usual, random cats will be seen on this web app.”
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+The app randomly loads images from **TheCatAPI**.  
+They serve *absolutely no purpose* other than to make the experience more enjoyable.
 
-### Making a Progressive Web App
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 🧑‍💻 Developer Notes
 
-### Advanced Configuration
+This project was built out of **procrastination**, **necessity**, and **cat appreciation**. 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+ALSO **Big Thanks** to AI Friends (Claude, ChatGPT) for helping me code this app. 
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `npm run build` fails to minify
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### 🪄 Future Plans
+- No plans. This may be abandoned. Excpet when looking for cats. Or next contract
+
+---
+
+**Created by:** Nefriend Francisco  
+**PhilRice Data Analytics Center - Analytics Unit**
