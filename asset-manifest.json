@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/annexa_app/static/css/main.06710861.css",
-    "main.js": "/annexa_app/static/js/main.43603d79.js",
+    "main.css": "/annexa_app/static/css/main.1145d9cc.css",
+    "main.js": "/annexa_app/static/js/main.0d9b419a.js",
     "static/js/453.d75b3065.chunk.js": "/annexa_app/static/js/453.d75b3065.chunk.js",
     "index.html": "/annexa_app/index.html",
-    "main.06710861.css.map": "/annexa_app/static/css/main.06710861.css.map",
-    "main.43603d79.js.map": "/annexa_app/static/js/main.43603d79.js.map",
+    "main.1145d9cc.css.map": "/annexa_app/static/css/main.1145d9cc.css.map",
+    "main.0d9b419a.js.map": "/annexa_app/static/js/main.0d9b419a.js.map",
     "453.d75b3065.chunk.js.map": "/annexa_app/static/js/453.d75b3065.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.06710861.css",
-    "static/js/main.43603d79.js"
+    "static/css/main.1145d9cc.css",
+    "static/js/main.0d9b419a.js"
   ]
 }
